@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zona Urbana - Tu tienda de estilo urbano con las mejores prendas y accesorios.">
+    <title>Zona Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            background: linear-gradient(to right, fuchsia, purple);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textAnimation 3s infinite alternate;
+        }
+        @keyframes textAnimation {
+            0% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        nav {
+            background-color: #444;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            background-color: #CC6CE7; /* Color morado claro */
+            transform: scale(1.05);
+        }
+        .cta {
+            background-color: #e91e63;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .cta button {
+            background-color: white;
+            color: #e91e63;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cta button:hover {
+            background-color: #d81b60;
+            color: white;
+        }
+        main {
+            padding: 20px;
+        }
+        .section {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .section:hover {
+            transform: scale(1.02);
+            background-color: #CC6CE7; /* Color morado claro al pasar el cursor */
+        }
+        .section h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .producto {
+            margin: 10px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        .producto:hover {
+            transform: scale(1.05);
+            background-color: #CC6CE7; /* Color morado claro al pasar el cursor */
+        }
+        .producto img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+ transition: transform 0.3s;
+        }
+        .producto:hover img {
+            transform: scale(1.1);
+        }
+        .producto figcaption {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #e91e63;
+            outline: none;
+        }
+        .contact-form button {
+            padding: 10px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #d81b60;
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: relative;
+        }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #e91e63;
+        }
+        .watermark {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                padding: 10px;
+                margin: 5px 0;
+            }
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+    <script>
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+            const nombre = document.querySelector('input[type="text"]').value;
+            const email = document.querySelector('input[type="email"]').value;
+            const mensajeCliente = document.querySelector('textarea').value;
+            const mensaje = `Hola, mi nombre es ${nombre}, mi correo es ${email} y tengo la siguiente duda: ${mensajeCliente}`;
+            const numeroWhatsApp = '50662414861'; // Número de WhatsApp en formato correcto
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Zona Urbana</h1>
+        <p>Tu tienda de estilo urbano</p>
+    </header>
+    <nav>
+        <a href="#about"><i class="fas fa-info-circle"></i> Información General</a>
+        <a href="#content"><i class="fas fa-th"></i> Contenido</a>
+        <a href="#gorras"><i class="fas fa-capsules"></i> Gorras</a>
+        <a href="#bolsos"><i class="fas fa-bags-shopping"></i> Bolsos</a>
+        <a href="#joyeria"><i class="fas fa-gem"></i> Joyería</a>
+        <a href="#accesorios"><i class="fas fa-sun"></i> Accesorios</a>
+        <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+    </nav>
+    <div class="cta">
+        <p>¡No te pierdas nuestras ofertas exclusivas!</p>
+        <button>Ver productos</button>
+    </div>
+    <main>
+        <section class="section" id="about">
+            <h2>Información General</h2>
+            <p>Zona Urbana es tu destino para encontrar las mejores prendas y accesorios con estilo urbano. Calidad y diseño en un solo lugar.</p>
+        </section>
+        <section class="section" id="content">
+            <h2>Contenido</h2>
+            <p>Explora nuestra amplia gama de productos que incluyen gorras, bolsos, joyería y accesorios. Cada artículo está diseñado para ofrecerte lo mejor en estilo y comodidad.</p>
+        </section>
+        <section class="section" id="gorras">
+            <h2>Gorras</h2>
+            <div class="galeria">
+                <figure class="producto">
+                    <img src="gorra1.jpg" alt="Gorra urbana de estilo moderno">
+                    <figcaption>Gorra Moderna</figcaption>
+                </figure>
+                <figure class="producto">
+                    <img src="gorra2.jpg" alt="Gorra clásica de algodón">
+                    <figcaption>Gorra Clásica</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="section" id="bolsos">
+            <h2>Bolsos</h2>
+            <div class="galeria">
+                <figure class="producto">
+                    <img src="bolso1.jpg" alt="Bolso de mano de cuero">
+                    <figcaption>Bolso de Mano</figcaption>
+                </figure>
+                <figure class="producto">
+                    <img src="bolso2.jpg" alt="Bolso de hombro de tela">
+                    <figcaption>Bolso de Hombro</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="section" id="joyeria">
+            <h2>Joyería</h2>
+            <div class="galeria">
+                <figure class="producto">
+                    <img src="joya1.jpg" alt="Collar de plata">
+                    <figcaption>Collar de Plata</figcaption>
+                </figure>
+                <figure class="producto">
+                    <img src="joya2.jpg" alt="Pulsera de cuero">
+                    <figcaption>Pulsera de Cuero</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="section" id="accesorios">
+            <h2>Accesorios</h2>
+            <div class="galeria">
+                <figure class="producto">
+                    <img src="accesorio1.jpg" alt="Gafas de sol">
+                    <figcaption>Gafas de Sol</figcaption>
+                </figure>
+                <figure class="producto">
+                    <img src="accesorio2.jpg" alt="Reloj de pulsera">
+                    <figcaption>Reloj de Pulsera</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="section" id="contacto">
+            <h2>Contacto</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Tu nombre" required>
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <textarea placeholder="Tu mensaje" rows="4" required></textarea>
+                <button type="submit" onclick="enviarWhatsApp(event)">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Zona Urbana. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="watermark">Diseñado por Estudio Icabalzeta</div>
+    </footer>
+</body>
+</html>
